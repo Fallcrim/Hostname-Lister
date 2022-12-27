@@ -40,7 +40,7 @@ async def get_hostname(ip: str) -> str:
     try:
         hostname = socket.gethostbyaddr(ip)[0]
     except socket.herror:
-        logging.info(f"Hostname not found for {ip}")
+        logging.warning(f"Hostname not found for {ip}")
         hostname = None
     return hostname
 
