@@ -77,9 +77,10 @@ def get_default_gateway_linux():
     output = subprocess.check_output(["ip", "route", "show", "default"])
 
     # Parse the output to get the default gateway
-    default_gateway = output.split()[3].decode("utf-8")
+    default_gateway = output.split()[2].decode("utf-8").split(".")
+    default_gateway[-1] = "1"
 
-    return default_gateway
+    return ".".join(default_gateway)
 
 
 def runner(window):
