@@ -90,7 +90,7 @@ def runner(window):
         else:
             logging.info("OS type: Linux/Unix")
             gateway = get_default_gateway_linux()
-        logging.info(f"Default gateway found as `{gateway}`")
+        logging.info(f"Default gateway resolved as `{gateway}`")
         devices = arp_scan(f"{gateway}/24")
         asyncio.run(resolve_hostnames(devices))
         devices = list(sorted(devices, key=lambda x: int(x["ip"].split(".")[-1]), reverse=False))
